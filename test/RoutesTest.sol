@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
@@ -9,9 +9,9 @@ contract RoutesTest {
 
     function beforeEach() public {
         instance = new Routes();
-    }
-
+    } 
+  
     function testSetOwner() public {
-        Assert.equal(instance.owner, address(this));
+        Assert.equal(instance.owner(), address(this), "missing owner address");
     }
 }
