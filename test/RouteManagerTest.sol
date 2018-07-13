@@ -2,13 +2,13 @@ pragma solidity ^0.4.24;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/Routes.sol";
+import "../contracts/RouteManager.sol";
 
-contract RoutesTest {
-    Routes instance;
+contract RouteManagerTest {
+    RouteManager instance;
 
     function beforeEach() public {
-        instance = new Routes();
+        instance = new RouteManager();
     } 
   
     function testSetOwner() public {
@@ -16,6 +16,8 @@ contract RoutesTest {
     }
 
     function testAddStop() public {
-        Assert.equal(instance.addStop("Cieszyn", "49.7629645", "18.6279841"), true, "Can not add new stop");
+        instance.addStop("PL1","Cieszyn", "49.7629645", "18.6279841");
+        Assert.equal(instance.stops.length(), 1, "Can not add new stop");
+        
     }
 }
